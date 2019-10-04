@@ -57,18 +57,20 @@ public class RegisterActivity extends AppCompatActivity {
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String display_name = mDisplayName.getEditText().toString();
-                String email = mEmail.getEditText().getText().toString();
-                String password = mPassword.getEditText().getText().toString();
+                String display_name = mDisplayName.getEditText().toString().trim();
+                String email = mEmail.getEditText().getText().toString().trim();
+                String password = mPassword.getEditText().getText().toString().trim();
 
-                if (!TextUtils.isEmpty(display_name) || !TextUtils.isEmpty(email) ||
+                if (!TextUtils.isEmpty(display_name) && !TextUtils.isEmpty(email) &&
                         !TextUtils.isEmpty(password)) {
 
                     mRegProgress.setTitle("Registering user");
                     mRegProgress.setMessage("Please wait while we create your account");
                     mRegProgress.setCanceledOnTouchOutside(false);
                     mRegProgress.show();
-                    register_user(display_name, email, password);
+                  } else {
+                    Toast.makeText(RegisterActivity.this, "Ada yang belum diisi",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
