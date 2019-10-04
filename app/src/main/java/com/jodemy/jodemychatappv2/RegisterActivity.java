@@ -68,8 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
                     mRegProgress.setMessage("Please wait while we create your account");
                     mRegProgress.setCanceledOnTouchOutside(false);
                     mRegProgress.show();
-                  } else {
-                    Toast.makeText(RegisterActivity.this, "Ada yang belum diisi",
+                    register_user(display_name, email, password);
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Fields can't be empty",
                             Toast.LENGTH_SHORT).show();
                 }
             }
